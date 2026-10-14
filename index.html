@@ -1153,6 +1153,37 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 }
 .highlight-card-group > a.card-bubble:hover{ transform:translateY(-2px); }
 @media (max-width:860px){ .highlight-card-group{ margin-left:0; margin-right:0; } }
+
+/* ==========================================================================
+   Mobile-only fixes (phones / small tablets). Nothing here applies above 860px,
+   so the desktop layout is unchanged.
+   ========================================================================== */
+@media (max-width:860px){
+  /* stop grid columns stretching to their widest content (Home Visits prices ran off-screen) */
+  .treatment-grid{ grid-template-columns:minmax(0,1fr); }
+  .treatment-main{ min-width:0; }
+  .pricing-three{ grid-template-columns:minmax(0,1fr); }
+  .team-cards{ grid-template-columns:minmax(0,1fr); }
+  .price-highlight{ padding:24px 22px; gap:20px 32px; }
+}
+@media (max-width:600px){
+  /* headings were capped at ~10 characters wide, which forced tall narrow wraps */
+  .split-copy h2, .highlight-wrap h2, .team-band h2, .page-hero h1{ max-width:none; }
+  .photo-band blockquote{ max-width:none; }
+  .hero-full h1{ max-width:none; font-size:clamp(30px,8.6vw,40px); }
+  /* "We are hiring!" bubble sat on top of the button above it: put it beside Careers instead */
+  .hiring-bubble{ bottom:auto; top:50%; left:calc(100% + 14px); transform:translateY(-50%); }
+  .hiring-bubble::after{ top:50%; left:-7px; transform:translateY(-50%);
+    border:7px solid transparent; border-right-color:var(--gold-start); border-left:0; }
+  /* keep the footer's last lines clear of the floating Book a session bar */
+  footer{ padding-bottom:88px; }
+  /* Rates by Duration table: fit all four columns on a phone instead of scrolling sideways */
+  .price-table{ font-size:14px; }
+  .price-table th, .price-table td{ padding:12px 8px; }
+  .price-table thead th{ font-size:10.5px; letter-spacing:.04em; }
+  .price-table td{ font-size:16px; }
+  .price-table-services{ padding:16px; }
+}
 </style>
 </head>
 <body>
@@ -2907,7 +2938,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <h2>Pricing and Claims</h2>
         <details class="faq-item">
           <summary><span>How Much Does a Session Cost?</span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <div class="faq-answer"><p>Home visit sessions with a Massage Therapist are <strong>$160 for 60 minutes</strong>, and clinic visits are <strong>$130 for 60 minutes</strong>. An initial assessment is $200 for home visits and $160 for clinic visits (a 1 hour session plus 15 minutes of report writing). A travel fee of $15&ndash;$60 applies to home visits, depending on the journey time.</p><p>Full details are on our <a href="#/home-visits">Pricing page</a>.</p></div>
+          <div class="faq-answer"><p>Home visit sessions with a Massage Therapist are <strong>$160 for 60 minutes</strong>, and clinic visits are <strong>$130 for 60 minutes</strong>. An initial assessment is $160 for home visits and $135 for clinic visits (a 60 minute assessment and treatment session plus 15 minutes of report writing). A travel fee of $15&ndash;$60 applies to home visits, depending on the journey time.</p><p>Full details are on our <a href="#/home-visits">Pricing page</a>.</p></div>
         </details>
         <details class="faq-item">
           <summary><span>Can I Claim Through My Health Fund or WorkCover?</span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
