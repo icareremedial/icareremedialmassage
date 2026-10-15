@@ -1134,7 +1134,11 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 .hero-corner-brand .hero-corner-logo{ width:100%; }
 .hero-corner-brand .logo-member{ width:100%; text-align:center; white-space:nowrap; font-size:min(10px,1.9vw); text-shadow:0 1px 8px rgba(20,22,24,0.7); }
 .footer-brand .logo-member{ margin:0 0 10px; white-space:nowrap; }
-@media (max-width:860px){ .hero-corner-brand{ width:min(190px,42vw); } }
+@media (max-width:860px){
+  .hero-corner-brand{ width:min(190px,42vw); }
+  .hero-corner-brand .logo-member{ white-space:normal; font-size:10px; line-height:1.35; text-wrap:balance; }
+}
+@media (max-width:420px){ .footer-brand .logo-member{ white-space:normal; } }
 
 /* Health Funds button: same size as the other cards, speech bubble sits separately below */
 .highlight-card-group{ margin-left:8%; margin-right:6%; display:flex; flex-direction:column; align-items:flex-start; }
