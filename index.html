@@ -555,7 +555,7 @@ body.nav-open{ overflow:hidden; }
 .rate-row{ padding:18px 22px; border-top:1px solid var(--line); }
 .rate-row:first-of-type{ border-top:none; }
 .rate-top{ display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:baseline; gap:12px; margin-bottom:8px; min-width:0; }
-.rate-name{ min-width:0; overflow-wrap:break-word; font-family:var(--font-serif); font-size:17px; line-height:1.3; color:var(--pine-dark); }
+.rate-name{ min-width:0; overflow-wrap:normal; font-family:var(--font-serif); font-size:17px; line-height:1.3; color:var(--pine-dark); }
 .rate-price{ min-width:max-content; font-family:var(--font-serif); font-size:22px; line-height:1; color:var(--pine-dark); white-space:nowrap; }
 .rate-detail{ display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px; font-size:13px; line-height:1.5; color:var(--ink-soft); }
 .rate-time{
@@ -772,7 +772,8 @@ footer{ background:#2B2D30; color:#E3E0D9; padding:44px 0 28px; }
 .testimonial-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .testimonial-card{ background:var(--bg-card); border:1px solid var(--line); padding:28px; display:flex; flex-direction:column; gap:14px; transition:transform .25s ease, box-shadow .25s ease; }
 .testimonial-card:hover{ transform:translateY(-5px); box-shadow:0 14px 26px rgba(31,33,36,0.1); }
-.testimonial-card .stars{ color:var(--ochre); font-size:15px; letter-spacing:2px; }
+.testimonial-card .stars{ color:#F5A623; font-size:18px; letter-spacing:2px; }
+.testimonial-card .stars .off{ color:#D9D6CE; }
 .testimonial-card p{ font-size:15px; margin:0; font-style:italic; color:var(--ink); font-family:var(--font-serif); }
 .testimonial-card .who{ font-size:13.5px; color:var(--ink-soft); font-style:normal; font-family:var(--font-sans); }
 @media (max-width:860px){ .testimonial-grid{ grid-template-columns:1fr; } }
@@ -1108,7 +1109,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 /* Updated pricing layout: clinic, home visit and workplace */
 .price-highlight .num small{ font-size:18px; color:var(--gold-start); margin-left:2px; }
 .pricing-three{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:20px; }
-@media (max-width:980px){ .pricing-three{ grid-template-columns:1fr; } }
+@media (max-width:1180px){ .pricing-three{ grid-template-columns:1fr; } }
 .pricing-three .rate-card{ display:flex; flex-direction:column; }
 .pricing-three .rate-row{ flex:1; }
 .rate-price small{ font-size:13px; font-family:var(--font-sans); color:var(--ink-soft); margin-left:2px; }
@@ -1246,6 +1247,41 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 .contact-page-map-link{ display:inline-flex; margin-top:10px; color:var(--gold-start); font-weight:650; text-decoration:underline; text-underline-offset:3px; }
 @media(max-width:860px){ .contact-page-section{ padding:24px 0 56px; } .contact-page-grid{ grid-template-columns:1fr; padding:0 16px; } .contact-page-card{ padding:30px 24px; } .contact-page-map{ min-height:330px; } }
 
+
+
+/* ---------- Live reviews ---------- */
+.reviews-status{ font-size:15px; color:var(--ink-soft); margin:0 0 22px; }
+.reviews-status:empty{ display:none; }
+.testimonial-card .who strong{ color:var(--pine-dark); font-weight:600; }
+.review-form-card{ margin-top:56px; background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:34px; max-width:760px; }
+.review-form-card h2{ font-size:clamp(24px,3vw,32px); margin:0 0 10px; }
+.review-form-intro{ margin:0 0 24px; font-size:15px; color:var(--ink-soft); max-width:60ch; }
+.rf-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:560px){ .rf-row{ grid-template-columns:1fr; } .review-form-card{ padding:24px 20px; } }
+.rf-field{ margin:0 0 18px; padding:0; border:0; min-width:0; }
+.rf-field label, .rf-stars legend{ display:block; font-size:13.5px; font-weight:600; color:var(--pine-dark); margin-bottom:6px; padding:0; }
+.rf-field input[type=text], .rf-field select, .rf-field textarea{ width:100%; background:var(--cream); border:1px solid var(--line); color:var(--ink); padding:12px 13px; font-family:var(--font-sans); font-size:15px; border-radius:6px; }
+.rf-field textarea{ resize:vertical; min-height:120px; }
+.rf-field input:focus-visible, .rf-field select:focus-visible, .rf-field textarea:focus-visible{ outline:2px solid var(--pine); outline-offset:2px; }
+.rf-count{ font-size:12px; color:var(--ink-soft); text-align:right; margin-top:4px; }
+.star-input{ display:inline-flex; flex-direction:row-reverse; gap:2px; }
+.star-input input{ position:absolute; opacity:0; width:1px; height:1px; }
+.star-input label{ font-size:34px; line-height:1; color:#CFCBC1; cursor:pointer; margin:0; transition:color .12s ease, transform .12s ease; }
+.star-input label:hover, .star-input label:hover ~ label, .star-input input:checked ~ label{ color:#F5A623; }
+.star-input label:hover{ transform:scale(1.12); }
+.star-input input:focus-visible + label{ outline:2px solid var(--pine); outline-offset:2px; border-radius:4px; }
+.rf-trap{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.rf-error{ color:#9B2C2C; background:#FBECEC; border:1px solid #E8B4B4; border-radius:8px; padding:10px 14px; font-size:14px; margin:0 0 14px; }
+.rf-error:empty{ display:none; }
+.rf-thanks{ display:none; text-align:center; padding:18px 8px; }
+.rf-thanks.show{ display:block; }
+.rf-thanks h3{ margin:0 0 8px; }
+.rf-thanks p{ margin:0 auto; max-width:46ch; color:var(--ink-soft); }
+#reviewSubmitting, #rfSubmit[disabled]{ opacity:.6; cursor:wait; }
+
+/* Pricing: never split a word across lines */
+#pricing, .pricing-three, .price-highlight, .rate-card, .travel-card, .price-table{ overflow-wrap:normal; word-break:keep-all; hyphens:none; -webkit-hyphens:none; }
+.price-type, .price-highlight .num, .rate-time, .rate-role, .travel-tier strong, .travel-tier small, .travel-price{ white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -1262,7 +1298,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
     <button class="sidenav-close" id="sidenavClose" aria-label="Close menu">&times;</button>
   </div>
   <ul class="navlinks" id="navlinks">
-      <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+      <li><a href="#/reviews">Reviews</a></li>
       <li><a href="#/index/about">About</a></li>
       <li><a href="#/careers" class="nav-hiring">Careers <span class="hiring-pill">We are hiring</span></a></li>
       <li><a href="#/contact">Contact</a></li>
@@ -1474,7 +1510,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -1530,7 +1566,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
           </div>
           <div class="contact-detail">
             <span class="contact-detail-label">Email</span>
-            <a class="contact-value" href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a>
+            <a class="contact-value" href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a>
             <p>Email us with enquiries and we’ll get back to you.</p>
           </div>
           <div class="contact-detail">
@@ -1545,7 +1581,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         </div>
         <div class="contact-page-actions">
           <a href="tel:+61455519408" class="btn btn-ochre">Call Us</a>
-          <a href="mailto:Icaremassage24@proton.me" class="btn btn-outline-dark">Email Us</a>
+          <a href="mailto:info@icareremedialmassage.com.au" class="btn btn-outline-dark">Email Us</a>
         </div>
       </div>
       <div class="contact-page-map">
@@ -1685,7 +1721,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -1812,7 +1848,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         </div>
         <div class="travel-row">
           <div class="travel-tier"><strong>Long journey</strong><small>30–45 minutes</small></div>
-          <span class="travel-price">$45*</span>
+          <span class="travel-price">$45</span>
         </div>
         <div class="travel-row">
           <div class="travel-tier"><strong>Extra long journey</strong><small>45–60 minutes</small></div>
@@ -1872,7 +1908,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -1917,21 +1953,58 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 
 <section>
   <div class="wrap">
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Placeholder quote, replace with a real review, e.g. from Google or a client email."</p>
-        <div class="who">Client name, treatment type</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Placeholder quote, replace with a real review, e.g. from Google or a client email."</p>
-        <div class="who">Client name, treatment type</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p>"Placeholder quote, replace with a real review, e.g. from Google or a client email."</p>
-        <div class="who">Client name, treatment type</div>
+    <div id="reviewsStatus" class="reviews-status" role="status" aria-live="polite">Loading reviews&hellip;</div>
+    <div class="testimonial-grid" id="reviewsGrid"></div>
+
+    <div class="review-form-card" id="reviewFormCard">
+      <h2>Share your experience</h2>
+      <p class="review-form-intro">Treated by us? We would love to hear how it went. Reviews are checked before they appear on this page. Please don&rsquo;t include private health details.</p>
+      <form id="reviewForm" novalidate>
+        <div class="rf-row">
+          <div class="rf-field">
+            <label for="rfName">Your name</label>
+            <input id="rfName" name="name" type="text" maxlength="60" autocomplete="name" placeholder="e.g. Sarah M." required>
+          </div>
+          <div class="rf-field">
+            <label for="rfTreatment">Treatment (optional)</label>
+            <select id="rfTreatment" name="treatment">
+              <option value="">Select&hellip;</option>
+              <option>Remedial Massage</option>
+              <option>Deep Tissue Massage</option>
+              <option>Sports Massage</option>
+              <option>Relaxation Massage</option>
+              <option>Pregnancy Massage</option>
+              <option>Cupping</option>
+              <option>Lymphatic Drainage</option>
+              <option>Pain Management</option>
+              <option>Trigger Point Therapy</option>
+              <option>Acupressure</option>
+              <option>Home Visit</option>
+            </select>
+          </div>
+        </div>
+        <fieldset class="rf-field rf-stars">
+          <legend>Your rating</legend>
+          <div class="star-input">
+            <input type="radio" id="rfS5" name="rating" value="5"><label for="rfS5" title="5 stars" aria-label="5 stars">&#9733;</label>
+            <input type="radio" id="rfS4" name="rating" value="4"><label for="rfS4" title="4 stars" aria-label="4 stars">&#9733;</label>
+            <input type="radio" id="rfS3" name="rating" value="3"><label for="rfS3" title="3 stars" aria-label="3 stars">&#9733;</label>
+            <input type="radio" id="rfS2" name="rating" value="2"><label for="rfS2" title="2 stars" aria-label="2 stars">&#9733;</label>
+            <input type="radio" id="rfS1" name="rating" value="1"><label for="rfS1" title="1 star" aria-label="1 star">&#9733;</label>
+          </div>
+        </fieldset>
+        <div class="rf-field">
+          <label for="rfReview">Your review</label>
+          <textarea id="rfReview" name="review" rows="5" maxlength="1000" placeholder="Tell us about your visit&hellip;" required></textarea>
+          <div class="rf-count"><span id="rfCount">0</span>/1000</div>
+        </div>
+        <div class="rf-trap" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="rf-error" id="rfError" role="alert"></div>
+        <button type="submit" class="btn btn-ochre" id="rfSubmit">Submit review</button>
+      </form>
+      <div class="rf-thanks" id="rfThanks" role="status" tabindex="-1">
+        <h3>Thank you!</h3>
+        <p>Your review has been received and will appear on this page once it has been approved.</p>
       </div>
     </div>
 
@@ -1964,7 +2037,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2024,10 +2097,10 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
       <p><strong>Option 1:</strong> Fill in our short online application form.</p>
       <a href="https://forms.gle/nBQTtSZK5X1iEhHC7" target="_blank" rel="noopener" class="btn btn-ochre btn-block">Apply via Google Form</a>
       <p style="margin-top:22px;"><strong>Option 2:</strong> Send your resume and cover letter to:</p>
-      <p><a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a></p>
+      <p><a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a></p>
       <p>Questions? Email us or call <a href="tel:+61455519408">0455 519 408</a> and we will get back to you.</p>
       <p>We handle applications in line with our <a href="#/privacy-policy">Privacy Policy</a>.</p>
-      <a href="mailto:Icaremassage24@proton.me?subject=Massage%20Therapist%20Application" class="btn btn-outline-dark btn-block">Email your application</a>
+      <a href="mailto:info@icareremedialmassage.com.au?subject=Massage%20Therapist%20Application" class="btn btn-outline-dark btn-block">Email your application</a>
     </div>
   </div>
 </section>
@@ -2054,7 +2127,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2160,7 +2233,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2266,7 +2339,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2371,7 +2444,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2477,7 +2550,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2582,7 +2655,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2689,7 +2762,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2794,7 +2867,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -2899,7 +2972,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3005,7 +3078,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3108,18 +3181,18 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         </details>
         <details class="faq-item">
           <summary><span>How Do I Cancel My Booking?</span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <div class="faq-answer"><p>Just contact us by email at <a href="mailto:Icaremassage24@proton.me?subject=Cancel%20my%20booking">Icaremassage24@proton.me</a> or call us on <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</p></div>
+          <div class="faq-answer"><p>Just contact us by email at <a href="mailto:info@icareremedialmassage.com.au?subject=Cancel%20my%20booking">info@icareremedialmassage.com.au</a> or call us on <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</p></div>
         </details>
         <details class="faq-item" id="privacy-policy">
           <summary><span>What Is Your Privacy Policy?</span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <div class="faq-answer"><p>We only collect the information we need to book and treat you: your name and contact details, your address for home visits, and any health information you share so we can treat you safely.</p><p>We keep your information confidential and use it only to provide your care, manage your bookings (including confirmations and reminders) and process health fund or WorkCover claims where relevant. We do not sell your information, and we only share it with others when you have agreed or when the law requires it.</p><p>You can ask to see or update the information we hold about you at any time by emailing <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a>.</p><p>Read our full <a href="#/privacy-policy">Privacy Policy</a>.</p></div>
+          <div class="faq-answer"><p>We only collect the information we need to book and treat you: your name and contact details, your address for home visits, and any health information you share so we can treat you safely.</p><p>We keep your information confidential and use it only to provide your care, manage your bookings (including confirmations and reminders) and process health fund or WorkCover claims where relevant. We do not sell your information, and we only share it with others when you have agreed or when the law requires it.</p><p>You can ask to see or update the information we hold about you at any time by emailing <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a>.</p><p>Read our full <a href="#/privacy-policy">Privacy Policy</a>.</p></div>
         </details>
       </div>
     </div>
 
     <div class="review-cta">
       <p>Still have a question? Send us an email or call <a href="tel:+61455519408">0455 519 408</a> and we will help.</p>
-      <a href="mailto:Icaremassage24@proton.me?subject=Question%20about%20iCare%20Remedial%20Massage" class="btn btn-ochre">Email us</a>
+      <a href="mailto:info@icareremedialmassage.com.au?subject=Question%20about%20iCare%20Remedial%20Massage" class="btn btn-ochre">Email us</a>
     </div>
   </div>
 </section>
@@ -3146,7 +3219,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3243,13 +3316,13 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 <p>This website has no user accounts, and we have not added advertising or analytics tracking to it. It does load content from Google, including web fonts and an embedded map on the home page, so Google may receive technical information such as your IP address when you visit. Our booking and application buttons open Google Forms, which Google operates under its own privacy policy. This policy does not cover other websites we link to.</p>
 
 <h2>Accessing and Correcting Your Information</h2>
-<p>You can ask to see the information we hold about you, or to correct it, at any time by emailing <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a>. We will confirm your identity first, then respond within a reasonable time and within the time the law requires. In limited circumstances the law allows us to refuse access, and if we do we will tell you why in writing.</p>
+<p>You can ask to see the information we hold about you, or to correct it, at any time by emailing <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a>. We will confirm your identity first, then respond within a reasonable time and within the time the law requires. In limited circumstances the law allows us to refuse access, and if we do we will tell you why in writing.</p>
 
 <h2>Data Breaches</h2>
 <p>If there is a data breach that is likely to result in serious harm, we will act quickly to contain it and will notify you and the Office of the Australian Information Commissioner as required by the Notifiable Data Breaches scheme.</p>
 
 <h2>Questions and Complaints</h2>
-<p>If you have a question or concern about how we handle your information, email <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> or call <a href="tel:+61455519408">0455 519 408</a> and we will respond as soon as we can. If you are not satisfied with our response, you can contact the Office of the Australian Information Commissioner (oaic.gov.au, 1300 363 992) or the Health Complaints Commissioner Victoria (hcc.vic.gov.au, 1300 582 113).</p>
+<p>If you have a question or concern about how we handle your information, email <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> or call <a href="tel:+61455519408">0455 519 408</a> and we will respond as soon as we can. If you are not satisfied with our response, you can contact the Office of the Australian Information Commissioner (oaic.gov.au, 1300 363 992) or the Health Complaints Commissioner Victoria (hcc.vic.gov.au, 1300 582 113).</p>
 
 <h2>Changes to This Policy</h2>
 <p>We may update this policy from time to time. The latest version is always on this page, with the date it was last updated at the top.</p>
@@ -3290,7 +3363,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3363,7 +3436,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 <h2>Intellectual Property and Disclaimer</h2>
 <p>The information on this website is general information about our services and about massage therapy. It is not medical advice, and results vary from person to person. Please see your doctor or another qualified health professional about your own health. We try to keep the website accurate and up to date, but prices, availability and service details can change, so please confirm them with us when you book.</p>
 <p>The text, images, logos, design and other content on this website are owned by us or used with permission, and are protected by copyright. You may view the website and print pages for your own personal, non-commercial use, but you may not copy, reproduce, modify or distribute any content without our written permission. Logos of other organisations are trademarks of their respective owners.</p>
-<p>If you appear in a photo on this website and would like it removed, email <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> and we will remove it promptly. To the extent the law allows, we are not responsible for loss or damage that results from relying on the information on this website, or from the website being unavailable or containing errors.</p>
+<p>If you appear in a photo on this website and would like it removed, email <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> and we will remove it promptly. To the extent the law allows, we are not responsible for loss or damage that results from relying on the information on this website, or from the website being unavailable or containing errors.</p>
 
 <h2>Your Rights Under Australian Law</h2>
 <p>Nothing in these terms excludes, restricts or modifies any right or remedy you have under the Australian Consumer Law or any other law that cannot be excluded.</p>
@@ -3375,7 +3448,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 <p>These terms are governed by the laws of Victoria, Australia, and you and we submit to the non-exclusive jurisdiction of the courts of Victoria.</p>
 
 <h2>Contact</h2>
-<p>Questions about these terms? Email <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> or call <a href="tel:+61455519408">0455 519 408</a>.</p>
+<p>Questions about these terms? Email <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> or call <a href="tel:+61455519408">0455 519 408</a>.</p>
 
     </div>
 
@@ -3413,7 +3486,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3463,12 +3536,12 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 <p>We understand that life happens and plans change! To ensure we can accommodate other clients, we ask for a minimum of <strong>24 hours' notice</strong> if you need to cancel or change your appointment. Failure to provide <strong>24 hours' notice</strong> may result in a cancellation fee of up to <strong>50% of your treatment cost</strong>.</p>
 
 <h2>How to Cancel</h2>
-<p>If you need to cancel or change your appointment, please contact us by email at <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> or by calling us on <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</p>
+<p>If you need to cancel or change your appointment, please contact us by email at <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> or by calling us on <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</p>
 
 <h2>How the 24 Hours' Notice Works</h2>
 <ul>
 <li>Notice must reach us at least <strong>24 hours before your appointment start time</strong>. For example, for a 2:00 pm appointment on Friday, we need to hear from you by 2:00 pm on Thursday.</li>
-<li>Notice must be given by email to <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> or by calling <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</li>
+<li>Notice must be given by email to <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> or by calling <a href="tel:+61455519408">0455 519 408</a>. Please include your name and the date and time of your appointment so we can find your booking.</li>
 <li>Your notice counts from the time we receive your email or answer your call, not from the time you wrote it. We will reply to confirm that your cancellation or change has been received. If you do not hear back, please follow up so there is no confusion.</li>
 <li>The 24 hours is counted in real time, including weekends and public holidays, not business hours.</li>
 <li>If you would like to reschedule rather than cancel, include a few times that suit you. Changing your appointment to a new time also needs 24 hours' notice.</li>
@@ -3527,7 +3600,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3601,7 +3674,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
 <p>Cancellation fees may not be claimable from your health fund, WorkCover or your package. See our <a href="#/cancellation-policy">Cancellation Policy</a>.</p>
 
 <h2>Receipts and Information</h2>
-<p>Please give us accurate details for your claim, and keep your receipts. If you are not sure whether your funding is accepted, email <a href="mailto:Icaremassage24@proton.me">Icaremassage24@proton.me</a> or call <a href="tel:+61455519408">0455 519 408</a> before you book and we will help.</p>
+<p>Please give us accurate details for your claim, and keep your receipts. If you are not sure whether your funding is accepted, email <a href="mailto:info@icareremedialmassage.com.au">info@icareremedialmassage.com.au</a> or call <a href="tel:+61455519408">0455 519 408</a> before you book and we will help.</p>
 
     </div>
 
@@ -3639,7 +3712,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3724,7 +3797,7 @@ a.highlight-card{ display:block; text-decoration:none; cursor:pointer; }
         <div class="footer-col">
           <h4>More</h4>
           <ul>
-            <!-- TEMP-HIDE-REVIEWS <li><a href="#/reviews">Reviews</a></li> -->
+            <li><a href="#/reviews">Reviews</a></li>
             <li><a href="#/treatments">Treatments</a></li>
             <li><a href="#/faq">FAQ</a></li>
             <li><a href="#/careers" class="footer-hiring">Careers: we are hiring</a></li>
@@ -3930,8 +4003,8 @@ document.querySelectorAll('img[data-asset]').forEach(function (img) { img.src = 
 (function () {
   var views = {};
   document.querySelectorAll('.view').forEach(function (v) { views[v.getAttribute('data-view')] = v; });
-  // TEMP-HIDE-REVIEWS: set to false (and uncomment the nav links) to bring the Reviews page back
-  var HIDE_REVIEWS = true;
+  // Reviews page is live
+  var HIDE_REVIEWS = false;
   if (HIDE_REVIEWS) delete views['reviews'];
   function route() {
     var parts = location.hash.replace(/^#\/?/, '').split('/');
@@ -3957,6 +4030,81 @@ document.querySelectorAll('img[data-asset]').forEach(function (img) { img.src = 
   route();
 })();
 
+</script>
+
+<script>
+/* ---------- Live reviews ----------
+   After deploying the Google Apps Script (see reviews-apps-script.gs),
+   paste its Web App URL between the quotes below. */
+(function () {
+  var REVIEWS_URL = 'https://script.google.com/macros/s/AKfycbxgvgBv8rzbOqdoacvJgBEJEZGJtnf9R9ji159-kbdeLurwuHIkAJhpT6xcnmZiWWCr/exec';
+  var configured = REVIEWS_URL.indexOf('https://script.google.com/') === 0;
+  var grid = document.getElementById('reviewsGrid');
+  var statusEl = document.getElementById('reviewsStatus');
+  var form = document.getElementById('reviewForm');
+  if (!grid || !form) return;
+
+  function stars(n) { n = Math.max(1, Math.min(5, parseInt(n, 10) || 5)); return '\u2605'.repeat(n) + '\u2606'.repeat(5 - n); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  function render(list) {
+    grid.innerHTML = '';
+    if (!list.length) { statusEl.textContent = 'No reviews yet. Be the first to share your experience below.'; return; }
+    statusEl.textContent = '';
+    list.forEach(function (r) {
+      var card = el('div', 'testimonial-card');
+      var n = Math.max(1, Math.min(5, parseInt(r.rating, 10) || 5));
+      var st = el('div', 'stars'); st.setAttribute('aria-label', n + ' out of 5 stars');
+      st.appendChild(el('span', '', '\u2605'.repeat(n)));
+      st.appendChild(el('span', 'off', '\u2605'.repeat(5 - n)));
+      card.appendChild(st);
+      card.appendChild(el('p', '', '\u201C' + r.review + '\u201D'));
+      var who = el('div', 'who');
+      who.appendChild(el('strong', '', r.name));
+      if (r.treatment) who.appendChild(document.createTextNode(', ' + r.treatment));
+      card.appendChild(who);
+      grid.appendChild(card);
+    });
+  }
+
+  function load() {
+    if (!configured) { statusEl.textContent = 'No reviews yet. Be the first to share your experience below.'; return; }
+    fetch(REVIEWS_URL + '?action=list&t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { render(Array.isArray(d.reviews) ? d.reviews : []); })
+      .catch(function () { statusEl.textContent = 'Reviews are taking a moment to load. Please try again shortly.'; });
+  }
+  load();
+
+  var review = document.getElementById('rfReview'), count = document.getElementById('rfCount');
+  review.addEventListener('input', function () { count.textContent = review.value.length; });
+
+  var errEl = document.getElementById('rfError'), btn = document.getElementById('rfSubmit'), thanks = document.getElementById('rfThanks');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    errEl.textContent = '';
+    var name = form.elements.name.value.trim();
+    function showErr(m) { errEl.textContent = m; errEl.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    var text = form.elements.review.value.trim();
+    var rating = (form.querySelector('input[name=rating]:checked') || {}).value;
+    if (!name) { showErr('Please enter your name.'); form.elements.name.focus(); return; }
+    if (!rating) { showErr('Please choose a star rating.'); return; }
+    if (text.length < 10) { showErr('Please write a little more about your visit (at least 10 characters).'); review.focus(); return; }
+    if (!configured) { showErr('Reviews are not switched on yet. Please check back soon.'); return; }
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    var payload = { name: name, rating: rating, review: text, treatment: form.elements.treatment.value, website: form.elements.website.value };
+    fetch(REVIEWS_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      .then(function () {
+        form.style.display = 'none';
+        document.querySelector('.review-form-intro').style.display = 'none';
+        thanks.classList.add('show'); thanks.focus();
+      })
+      .catch(function () {
+        showErr('Sorry, something went wrong sending your review. Please try again, or email us at info@icareremedialmassage.com.au.');
+        btn.disabled = false; btn.textContent = 'Submit review';
+      });
+  });
+})();
 </script>
 </body>
 </html>
